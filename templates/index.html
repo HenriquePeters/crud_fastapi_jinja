@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Lista de Itens{% endblock %}
+{% block content %}
+<h2>Itens Cadastrados</h2>
+
+<form method="get" action="/" class="search-form">
+  <input type="text" name="search" value="{{ search }}" placeholder="Buscar por nome...">
+  <button type="submit" class="btn-search">Buscar</button>
+  {% if search %}
+    <a href="/" class="btn-clear">Limpar</a>
+  {% endif %}
+</form>
+
+{% if itens %}
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in itens %}
+    <tr>
+      <td>{{ item.id }}</td>
+      <td>{{ item.nome }}</td>
+      <td>{{ item.descricao }}</td>
+      <td class="actions">
+        <a href="/editar/{{ item.id }}" class="btn-edit">Editar</a>
+        <a href="/deletar/{{ item.id }}" class="btn-delete">Excluir</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class="empty">
+  <p>Nenhum item cadastrado ainda.</p>
+</div>
+{% endif %}
+{% endblock %}

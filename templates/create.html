@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Novo Item{% endblock %}
+{% block content %}
+<div class="form-card">
+  <h2>Adicionar Novo Item</h2>
+  <form action="/criar" method="post">
+    <label>Nome:</label>
+    <input type="text" name="nome" required>
+
+    <label>Descrição:</label>
+    <textarea name="descricao" rows="4" required></textarea>
+
+    <button type="submit" class="btn-primary">Salvar</button>
+  </form>
+</div>
+{% endblock %}

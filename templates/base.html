@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}CRUD FastAPI + Jinja2{% endblock %}</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-left">
+      <h1>FastAPI&Jinja2</h1>
+    </div>
+    <nav class="nav-links">
+      <a href="/">Início</a>
+      <a href="/novo" class="btn">➕ Novo Item</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    {% if message %}
+      <div class="flash {{ message_type }}">
+        {{ message }}
+      </div>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>Desenvolvido por Henrique Peters usando FastAPI & Jinja2</p>
+  </footer>
+</body>
+</html>
